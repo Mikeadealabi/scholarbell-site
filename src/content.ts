@@ -45,46 +45,45 @@ export const COSTS: [string, string][] = [
 ];
 
 export const SOLUTIONS: [string, string][] = [
-  ["Parents say they didn't know", "Every announcement tracks who has read it and who has acknowledged it. You see the numbers, and you have the record."],
-  ["Wrong audience", "You choose the audience from a tree: whole school, a division, a class, or one child's family. Before you publish, you see a live count, for example \"36 parents will receive this\", with a breakdown."],
-  ["WhatsApp group chaos", "Official notices live in one secure place under the school's name. Staff phone numbers stay private, and nothing disappears when a teacher leaves."],
-  ["Slips never come back", "Actions come in five types: acknowledge, permission, survey, form and document upload. You see who has completed, who is outstanding and who is overdue, in one view."],
-  ["Moved events", "The calendar keeps the original date, who changed it and why. Parents can RSVP."],
-  ["One parent, many children", "Brothers and sisters share one parent account. Each update is labelled School-wide, Primary, Primary 4A or For David, so the parent knows at a glance what applies to which child."],
-  ["Same questions all day", "A document centre and secure search put circulars, forms and policies where parents can find them. The parent home page shows what needs attention first."],
-  ["Uncontrolled access", "Roles are scoped: a class teacher sees only their class, a head of division sees their division. Every sensitive action is written to an audit log."],
+  ["Parents say they didn't know", "You can see who has read each announcement and who has acted on it. You have the record."],
+  ["Wrong audience", "Every message reaches the right families, and you know how many before you publish."],
+  ["WhatsApp group chaos", "Official notices live in one secure place under the school's name, not on staff phones."],
+  ["Slips never come back", "Permissions and forms are tracked, so you can see at a glance who has responded and who is outstanding."],
+  ["Moved events", "The calendar remembers every change, so nobody is left on the old date."],
+  ["One parent, many children", "One family account. Each update is clearly labelled for the child it concerns."],
+  ["Same questions all day", "Circulars, forms and policies are easy for parents to find, and what needs attention comes first."],
+  ["Uncontrolled access", "Staff see only what their role needs, and sensitive actions are recorded."],
 ];
 
 export const TRUST: { icon: LucideIcon; title: string; text: string }[] = [
-  { icon: Lock, title: "Your school's data is walled off.", text: "Each school's records are separated in the database itself, not just hidden on screen. Another school cannot see yours, even if a mistake is made elsewhere in the software." },
-  { icon: UserCheck, title: "Parents cannot sign themselves up.", text: "The school confirms every guardian relationship, and each parent receives a single-use invitation link." },
-  { icon: KeyRound, title: "Staff get a second lock.", text: "Staff can sign in with a password plus a 6-digit code from an authenticator app. You decide who must use it. New schools start with administrators required." },
-  { icon: Users, title: "Staff see only what their role allows.", text: "A class teacher sees their class. A head of division sees their division. Nobody sees everything by accident." },
-  { icon: ScrollText, title: "Everything sensitive leaves a trail.", text: "An audit log records who did what and when." },
+  { icon: Lock, title: "Your school's data is walled off.", text: "Each school's records are kept separate from every other school's, by design." },
+  { icon: UserCheck, title: "Parents cannot sign themselves up.", text: "Parents join by invitation, and the school confirms every guardian." },
+  { icon: KeyRound, title: "Staff get extra protection.", text: "Staff sign-in has a second step, and you decide who must use it." },
+  { icon: Users, title: "Staff see only what their role allows.", text: "Nobody sees everything by accident." },
+  { icon: ScrollText, title: "Everything sensitive leaves a trail.", text: "Important actions are recorded, so you can always answer \"who did what, and when\"." },
   { icon: ShieldCheck, title: "Uploaded files are checked.", text: "Documents are screened before they reach parents." },
-  { icon: Sparkles, title: "AI is optional and visible.", text: "It is off by default. Your administrator sees exactly what is sent to the AI service before turning it on. It never publishes anything by itself, and AI-written text is labelled." },
+  { icon: Sparkles, title: "AI is optional and under your control.", text: "It is off by default, and your staff always decide what is published." },
   { icon: ClipboardCheck, title: "Videos stay on YouTube or Vimeo.", text: "We do not host or copy them." },
 ];
 
 export const STEPS: [string, string][] = [
   ["We create your school", " and your first administrator account."],
-  ["Add your identity.", " Your name, colours, logo, term dates and a welcome message."],
-  ["Set up your structure.", " Divisions, levels and classes, the way your school actually works."],
-  ["Import your families.", " Download our spreadsheet template and fill in one row per student with up to two guardians. Click \"Check file\" first: nothing is saved, and every problem is listed by line so you can fix it. Then import."],
-  ["Invite parents.", " Each parent gets a single-use link by email, or you can send it from your own WhatsApp with a ready-written message in one tap. Phone numbers in common Nigerian formats are understood automatically."],
+  ["Make it yours.", " Your school's name, colours and term dates."],
+  ["Set up your structure and families.", " We guide you through bringing your classes and families across."],
+  ["Invite parents.", " Each parent receives a personal invitation by email or WhatsApp."],
   ["Publish your first announcement.", ""],
 ];
 
 export const FAQ: [string, string][] = [
   ["Do parents need to install anything?", "No. ScholarBell runs in the phone or computer browser."],
-  ["Can parents sign themselves up?", "No, by design. The school confirms each guardian, and each parent gets a single-use invitation link. This keeps strangers out."],
+  ["Can parents sign themselves up?", "No, by design. The school confirms each guardian and invites them personally. This keeps strangers out."],
   ["I am a parent and I have no invitation. What do I do?", "Ask your child's school office to invite you. Only the school can confirm that you are a guardian."],
-  ["What if some parents don't use email?", "You can send each invitation from your own WhatsApp with a ready-written message. Day-to-day notifications currently go in the app and by email. SMS and WhatsApp notifications are not available yet."],
-  ["How do we move our existing student and parent data?", "Fill in our spreadsheet template and run \"Check file\". Nothing is saved until every problem is fixed, and each problem is listed by line."],
-  ["Who owns our data? What if we leave?", "Your school's data belongs to your school. If you leave, your administrator can request a full download of it, protected by a password and a two-factor code. The school is then locked for 30 days, after which all of its data is permanently deleted, and you receive a certificate confirming the deletion. The certificate contains no personal data."],
-  ["Can another school see our information?", "No. Each school's data is separated in the database itself."],
-  ["Does the AI read our parents' private information?", "AI is off unless your administrator turns it on. The settings page says exactly what is sent. It only suggests wording, and your staff always publish."],
-  ["Can our school keep its own look?", "Yes. Name, colours and logo letters are set per school."],
+  ["What if some parents don't use email?", "Invitations can also be sent from your school's own WhatsApp. Day-to-day notifications currently go in the app and by email. SMS and WhatsApp notifications are not available yet."],
+  ["How do we move our existing student and parent data?", "We guide your administrator through it, and nothing goes live until it has been checked."],
+  ["Who owns our data? What if we leave?", "Your school's data belongs to your school. If you leave, you can request a full copy of it, and your data is then permanently deleted."],
+  ["Can another school see our information?", "No. Each school's data is kept separate from every other school's."],
+  ["Does the AI read our parents' private information?", "AI is off unless your administrator turns it on, and your staff always decide what is published. We will walk you through exactly how it works in the demo."],
+  ["Can our school keep its own look?", "Yes. Your school's name and colours are set per school."],
   ["What does it cost?", "We quote per school, based on the number of students. Call or message us for a quote."],
   ["Who do we call if something goes wrong?", `Call or message us on WhatsApp: ${SITE.phone1.label} or ${SITE.phone2.label}.`],
 ];

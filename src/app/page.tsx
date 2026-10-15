@@ -7,9 +7,9 @@ import { PROBLEMS, SITE, SOLUTIONS, TRUST } from "@/content";
 export const metadata: Metadata = { alternates: { canonical: `${SITE.url}/` } };
 
 const HOW = [
-  ["Set up in a guided checklist", "Add your name, colours and term dates, then import your families from a spreadsheet. The file is checked before anything is saved."],
-  ["Invite every parent", "Each parent gets a single-use link by email, or from your own WhatsApp in one tap. The school confirms every guardian."],
-  ["Publish and watch it land", "Choose the audience, see the live count, publish. You see who has read it and who has acted on it."],
+  ["Set up with guidance", "We help you add your school's identity and bring your families across."],
+  ["Invite every parent", "Each parent receives a personal invitation. The school confirms every guardian."],
+  ["Publish and watch it land", "Send to the right families and see how it is landing."],
 ];
 
 export default function Home() {
@@ -27,9 +27,9 @@ export default function Home() {
           <div className="mt-7 flex flex-wrap gap-3"><BookButton /><SignInButton /></div>
           <ul className="mt-8 space-y-2 text-[15px] text-ink-soft">
             {[
-              "Each school's data is kept separate and protected at the database level",
+              "Each school's data is kept separate from every other school's",
               "Parents join by invitation only, confirmed by the school",
-              "Works on any phone, with invitations sent by email or WhatsApp",
+              "Works on any phone, with nothing to install",
             ].map((t) => (
               <li key={t} className="flex gap-2"><Check className="mt-1 h-4 w-4 shrink-0 text-ok" aria-hidden /> {t}</li>
             ))}

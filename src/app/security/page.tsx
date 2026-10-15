@@ -4,7 +4,7 @@ import { SITE, TRUST } from "@/content";
 
 export const metadata: Metadata = {
   title: "Security and privacy",
-  description: "How ScholarBell protects information about children and families: separation between schools, invitation-only parents, two-step staff sign-in, scoped roles and an audit log.",
+  description: "How ScholarBell protects information about children and families, in plain words.",
   alternates: { canonical: `${SITE.url}/security/` },
 };
 
@@ -27,19 +27,19 @@ export default function Security() {
       <section className="border-y border-line bg-surface py-16">
         <div className="mx-auto grid max-w-6xl items-center gap-8 px-4 lg:grid-cols-2">
           <div>
-            <SectionHead align="left" eyebrow="The audit log" title="A record that cannot be edited" intro="Every sign-in, publication, change of date and role change is written to a permanent log. Entries cannot be edited or deleted." />
+            <SectionHead align="left" eyebrow="The audit log" title="A record you can rely on" intro="Important actions are recorded, so you can always answer who did what, and when." />
             <div className="rounded-2xl border border-line bg-canvas p-6">
               <p className="font-display text-lg font-semibold">Our honest position</p>
-              <p className="mt-2 text-[15px] text-ink-soft">Our protections are tested automatically, with hundreds of checks that run every time the software changes. We have not yet had an independent security review, and we will say so here when we have.</p>
+              <p className="mt-2 text-[15px] text-ink-soft">Our protections are tested automatically every time the software changes. We have not yet had an independent security review, and we will say so here when we have.</p>
             </div>
           </div>
-          <Shot src="/shots/audit.png" alt="The audit log recording who did what and when" />
+          <Shot src="/shots/audit.png" alt="The audit log, with details hidden" />
         </div>
       </section>
 
       <section className="mx-auto max-w-3xl px-4 py-16">
         <SectionHead eyebrow="If you leave" title="Your data belongs to your school" />
-        <p className="text-[17px] leading-relaxed text-ink-soft">If you leave, your administrator can request a full download of the school&apos;s data, protected by a password and a two-factor code. The school is then locked for 30 days, after which all of its data is permanently deleted, and you receive a certificate confirming the deletion. The certificate contains no personal data.</p>
+        <p className="text-[17px] leading-relaxed text-ink-soft">If you leave, you can request a full copy of the school&apos;s data, and it is then permanently deleted. We will walk you through the process in the demo.</p>
       </section>
 
       <CtaBand title="Have a security question? Ask us directly." />

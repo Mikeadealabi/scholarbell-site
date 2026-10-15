@@ -64,7 +64,7 @@ export default function About() {
             <ol className="list-decimal space-y-2 pl-6 marker:font-semibold marker:text-brand-strong">
               <li><strong className="text-ink">A parent should never have to wonder.</strong> Each family sees exactly what concerns their own children, clearly labelled, in one place.</li>
               <li><strong className="text-ink">A school should never have to guess.</strong> If a message matters, you should be able to see who has read it and who has acted on it.</li>
-              <li><strong className="text-ink">Security is not a feature you add later.</strong> Separation between schools, scoped roles, audit trails and second-step sign-in are built into the foundation.</li>
+              <li><strong className="text-ink">Security is not a feature you add later.</strong> Separation between schools, careful access and a record of important actions are built into the foundation.</li>
             </ol>
             <p>We built ScholarBell for the principal who wants an organised school, the administrator who wants their evenings back, and the parent who just wants to know what is happening with their child.</p>
             <p>If that is the kind of school you are building, we would be glad to show you how it works.</p>
