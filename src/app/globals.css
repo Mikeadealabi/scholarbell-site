@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ───────────── Design tokens ─────────────
+   Brand colours are overridden per tenant at runtime (see src/lib/branding.ts).
+   Everything else is shared so the product keeps one calm, consistent look. */
+:root {
+  /* Defaults (used on pages with no school branding, e.g. sign-in). Schools override --brand-l/-d/--accent inline. */
+  --brand-l: #14532d;
+  --brand-ink-l: #ffffff;
+  --brand-d: #5cbf86;
+  --brand-ink-d: #07150d;
+  --accent: #d97706;
+
+  --canvas: #f6f5f1;
+  --surface: #ffffff;
+  --line: #e7e4dc;
+  --ink: #1b1f1d;
+  --ink-soft: #4a524e;
+  --ink-faint: #6b736f; /* 4.9:1 on canvas: meets WCAG AA for text */
+
+  --ok: #166534; --ok-soft: #e8f5ec;
+  --warn: #92400e; --warn-soft: #fdf3e1;
+  --danger: #b42318; --danger-soft: #fdecea; --on-danger: #ffffff;
+  --info: #1e4e8c; --info-soft: #e8f0fb;
+
+  --shadow-rgb: 16 24 40;
+  color-scheme: light;
+}
+
+/* Dark theme: same tokens, new values. Chosen by the toggle (cookie sc_theme) or, with no choice yet, the OS setting. */
+:root[data-theme="dark"] {
+  --canvas: #0e1210;
+  --surface: #161b18;
+  --line: #29312c;
+  --ink: #e9eeea;
+  --ink-soft: #b6c0ba;
+  --ink-faint: #8f9b94; /* 6:1 on the dark canvas */
+
+  --ok: #63c98b; --ok-soft: #12291d;
+  --warn: #e8b65c; --warn-soft: #2b2110;
+  --danger: #f27f72; --danger-soft: #331816; --on-danger: #1a0907;
+  --info: #84b4ee; --info-soft: #14243a;
+
+  --shadow-rgb: 0 0 0;
+  --rule: 7%;
+  color-scheme: dark;
+}
+
+/* The brand scope turns the tenant's colour pair into the live tokens for the current theme.
+   Derived tokens live here too so they resolve against the right --brand. */
+:root, .brand-scope {
+  --brand: var(--brand-l);
+  --brand-ink: var(--brand-ink-l);
+  --brand-soft: color-mix(in oklab, var(--brand) 9%, var(--surface));
+  --brand-strong: color-mix(in oklab, var(--brand) 85%, black);
+  --accent-soft: color-mix(in oklab, var(--accent) 14%, var(--surface));
+}
+:root[data-theme="dark"], :root[data-theme="dark"] .brand-scope {
+  --brand: var(--brand-d);
+  --brand-ink: var(--brand-ink-d);
+  --brand-soft: color-mix(in oklab, var(--brand) 14%, var(--surface));
+  --brand-strong: color-mix(in oklab, var(--brand) 75%, white);
+  --accent-soft: color-mix(in oklab, var(--accent) 20%, var(--surface));
+}
+
+html { -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Visible keyboard focus everywhere. */
+:focus-visible { outline: 3px solid color-mix(in oklab, var(--brand) 55%, white); outline-offset: 2px; border-radius: 6px; }
+
+/* Respect reduced-motion preferences. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition
+           disabled:cursor-not-allowed disabled:opacity-55;
+  }
+  .btn-primary { @apply bg-brand text-brand-ink shadow-card hover:bg-brand-strong; }
+  .btn-secondary { @apply border border-line bg-surface text-ink hover:bg-brand-soft; }
+  .btn-ghost { @apply text-ink-soft hover:bg-brand-soft hover:text-ink; }
+  .btn-danger { @apply bg-danger text-danger-on hover:opacity-90; }
+  .btn-sm { @apply min-h-[36px] px-3 py-1.5 text-[13px]; }
+
+  .card { @apply rounded-2xl border border-line bg-surface shadow-card; }
+  .input {
+    @apply min-h-[44px] w-full rounded-xl border border-line bg-surface px-3 py-2 text-[15px] text-ink placeholder:text-ink-faint
+           focus:border-brand;
+  }
+  .label { @apply mb-1 block text-sm font-semibold text-ink; }
+  .hint { @apply mt-1 text-[13px] text-ink-faint; }
+  .badge { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold; }
+  .table-head { @apply px-3 py-2 text-left text-xs font-semibold uppercase tracking-wide text-ink-faint; }
+  .table-cell { @apply px-3 py-3 text-sm; }
+}
+
+/* Highlighter swipe behind a word. */
+.marker {
+  background: linear-gradient(transparent 58%, color-mix(in oklab, var(--accent) 42%, transparent) 58%, color-mix(in oklab, var(--accent) 42%, transparent) 92%, transparent 92%);
+  padding: 0 0.12em;
+  margin: 0 -0.12em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
