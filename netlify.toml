@@ -27,3 +27,24 @@
   for = "/shots/*"
   [headers.values]
     Cache-Control = "public, max-age=86400"
+
+# scholarbell.com used to serve the app. Keep old sign-in, invitation and password links working by sending them to the app.
+[[redirects]]
+  from = "/login"
+  to = "https://scholarbell.app/login"
+  status = 301
+
+[[redirects]]
+  from = "/login/*"
+  to = "https://scholarbell.app/login/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/invite/*"
+  to = "https://scholarbell.app/invite/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/forgot-password"
+  to = "https://scholarbell.app/forgot-password"
+  status = 301
