@@ -2,15 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ───────────── Design tokens ─────────────
-   Brand colours are overridden per tenant at runtime (see src/lib/branding.ts).
-   Everything else is shared so the product keeps one calm, consistent look. */
+/* ───────────── Design tokens ───────────── */
 :root {
-  /* Defaults (used on pages with no school branding, e.g. sign-in). Schools override --brand-l/-d/--accent inline. */
-  --brand-l: #14532d;
+  --brand-l: #1e3a5f;
   --brand-ink-l: #ffffff;
-  --brand-d: #5cbf86;
-  --brand-ink-d: #07150d;
+  --brand-d: #5b9bd5;
+  --brand-ink-d: #0b2036;
   --accent: #d97706;
 
   --canvas: #f6f5f1;
@@ -67,7 +64,10 @@
 
 html { -webkit-text-size-adjust: 100%; }
 body {
-  background: var(--canvas);
+  /* A faint graph-book dot grid on the canvas only: it sits behind every white card/section and never touches text. */
+  background-color: var(--canvas);
+  background-image: radial-gradient(circle, color-mix(in oklab, var(--ink) 16%, transparent) 1px, transparent 1.4px);
+  background-size: 24px 24px;
   color: var(--ink);
   font-family: var(--font-sans), system-ui, sans-serif;
   font-size: 16px;
@@ -116,3 +116,10 @@ body {
 }
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Gentle, independent drift for the outcome cards floating over a hero/feature screenshot.
+   Durations are offset and never align, so the pair reads as alive rather than mechanical. */
+@keyframes float-a { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+@keyframes float-b { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(7px); } }
+.animate-float-a { animation: float-a 6s ease-in-out infinite; }
+.animate-float-b { animation: float-b 7s ease-in-out infinite; animation-delay: .6s; }

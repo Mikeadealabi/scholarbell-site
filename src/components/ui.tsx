@@ -1,16 +1,60 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { ArrowRight, LogIn, MessageCircle, Users } from "lucide-react";
+import { ArrowRight, Check, LogIn, MessageCircle, Users } from "lucide-react";
 import { SITE } from "@/content";
 
-/** A product screenshot from the seeded demo school. Always labelled as sample data. */
-export function Shot({ src, alt, caption, priority }: { src: string; alt: string; caption?: string; priority?: boolean }) {
+/** A product screenshot from the seeded demo school. */
+export function Shot({ src, alt, priority }: { src: string; alt: string; priority?: boolean }) {
   return (
     <figure className="overflow-hidden rounded-2xl border border-line bg-surface shadow-pop">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} width={1440} height={900} loading={priority ? "eager" : "lazy"} className="block h-auto w-full" />
-      <figcaption className="border-t border-line px-4 py-2 text-xs text-ink-faint">{caption ?? "Demo school, sample data"}</figcaption>
     </figure>
+  );
+}
+
+/** The hero screenshot with two outcome cards drifting over it: what the product delivers, never how. Built from brand tokens, not screenshots, so nothing new leaks. */
+export function HeroShot({ src, alt, priority }: { src: string; alt: string; priority?: boolean }) {
+  return (
+    <div className="relative">
+      <Shot src={src} alt={alt} priority={priority} />
+      <div className="animate-float-a pointer-events-none absolute -right-3 -top-5 hidden w-52 rounded-2xl border border-line bg-surface p-3.5 shadow-pop sm:block lg:-right-6 lg:w-56">
+        <div className="flex items-center gap-2.5">
+          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-soft text-brand-strong" aria-hidden><Users className="h-4 w-4" /></span>
+          <div className="min-w-0">
+            <p className="truncate text-[13px] font-semibold text-ink">Mrs. Okafor</p>
+            <p className="truncate text-[11px] text-ink-faint">Primary 4A, class teacher</p>
+          </div>
+        </div>
+        <p className="mt-2.5 flex items-center gap-1.5 text-[12px] font-semibold text-ink"><Check className="h-3.5 w-3.5 shrink-0 text-ok" aria-hidden /> Sent to 36 parents · 32 already read</p>
+      </div>
+      <div className="animate-float-b pointer-events-none absolute -bottom-6 -left-3 hidden w-48 rounded-2xl border border-line bg-surface p-3 shadow-pop sm:block lg:-left-6">
+        <div className="flex items-center gap-3">
+          <span className="flex h-11 w-11 shrink-0 flex-col items-center justify-center rounded-xl bg-brand text-brand-ink" aria-hidden>
+            <span className="text-[9px] font-bold uppercase leading-none">Oct</span>
+            <span className="text-base font-bold leading-none">12</span>
+          </span>
+          <div className="min-w-0">
+            <p className="truncate text-[13px] font-semibold text-ink">Sports Day moved</p>
+            <p className="truncate text-[11px] text-ink-faint">All parents notified</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/** The composer screenshot with one reach card drifting over it: a smaller echo of HeroShot for the second selling image. */
+export function ComposerShot({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="relative">
+      <Shot src={src} alt={alt} />
+      <div className="animate-float-a pointer-events-none absolute -right-3 -top-5 hidden w-44 rounded-2xl border border-line bg-surface p-3 shadow-pop sm:block lg:-right-7">
+        <p className="text-[11px] font-semibold uppercase tracking-wide text-ink-faint">This message</p>
+        <p className="mt-1 text-[13px] font-semibold text-ink">Reaching 212 parents</p>
+        <p className="text-[11px] text-ink-faint">Primary 4A &amp; 4B only</p>
+      </div>
+    </div>
   );
 }
 
@@ -68,19 +112,3 @@ export function AudienceCards() {
   );
 }
 
-export function CtaBand({ title = "In 30 minutes, we'll show you how your school's problems get solved." }: { title?: string }) {
-  return (
-    <section className="mx-auto max-w-4xl px-4 py-16">
-      <div className="card overflow-hidden">
-        <div className="bg-brand px-6 py-10 text-center text-brand-ink sm:px-10">
-          <h2 className="font-display text-3xl font-semibold sm:text-4xl">{title}</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg opacity-90">Tell us a little about your school and we will walk you through ScholarBell using a demo school that looks like yours. No pressure and no jargon.</p>
-          <div className="mt-7 flex flex-wrap justify-center gap-3">
-            <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="btn !min-h-[48px] !px-6 !text-base bg-surface text-ink hover:opacity-90"><MessageCircle className="h-5 w-5" aria-hidden /> Book on WhatsApp</a>
-            <a href={`tel:${SITE.phone1.tel}`} className="btn !min-h-[48px] !px-6 !text-base border border-white/40 text-brand-ink hover:bg-white/10">Call {SITE.phone1.label}</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}

@@ -14,7 +14,7 @@ export function SiteHeader() {
   const active = (href: string) => path === href || path === href.replace(/\/$/, "");
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-surface/90 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4">
+      <div className="mx-auto flex h-16 max-w-[1400px] items-center gap-3 px-6">
         <Link href="/" className="flex items-center gap-2.5" aria-label="ScholarBell home">
           <Logo />
           <span className="font-display text-lg font-semibold">ScholarBell</span>

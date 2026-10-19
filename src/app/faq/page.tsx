@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
-import { CtaBand, PageHero } from "@/components/ui";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { CtaBand } from "@/components/CtaBand";
+import { PageHero } from "@/components/ui";
 import { FAQ as ITEMS, SITE } from "@/content";
 
 export const metadata: Metadata = {
@@ -29,6 +32,12 @@ export default function Faq() {
             </details>
           ))}
         </div>
+        <p className="mt-8 text-center text-[15px] text-ink-soft">
+          Trouble actually signing in?{" "}
+          <Link href="/help/signing-in/" className="inline-flex items-center gap-1 font-semibold text-brand-strong hover:underline">
+            Visit the help centre <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+          </Link>
+        </p>
       </section>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }} />
       <CtaBand />

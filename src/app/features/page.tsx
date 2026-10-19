@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { X } from "lucide-react";
-import { CtaBand, MoreLink, PageHero, SectionHead, Shot } from "@/components/ui";
+import { CtaBand } from "@/components/CtaBand";
+import { MoreLink, PageHero, SectionHead, Shot } from "@/components/ui";
 import { SITE, SOLUTIONS, STEPS } from "@/content";
 
 export const metadata: Metadata = {
@@ -14,7 +15,7 @@ export default function Features() {
     <>
       <PageHero eyebrow="Features" title="One job, done properly" intro="Getting the right information to the right family and proving it arrived. Every feature below answers a real problem schools tell us about." />
 
-      <section className="mx-auto max-w-6xl px-4 py-16">
+      <section className="mx-auto max-w-[1400px] px-6 py-16">
         <div className="grid items-start gap-8 lg:grid-cols-2">
           <dl className="divide-y divide-line rounded-2xl border border-line bg-surface">
             {SOLUTIONS.map(([p, s], i) => (
@@ -24,17 +25,19 @@ export default function Features() {
               </div>
             ))}
           </dl>
-          <div className="space-y-6 lg:sticky lg:top-24">
+          <div className="lg:sticky lg:top-24">
             <Shot src="/shots/composer.png" alt="The announcement composer showing how many parents will receive the message" />
-            <Shot src="/shots/actions.png" alt="The actions tracker, with details hidden" />
-            <Shot src="/shots/calendar.png" alt="A calendar event, with details hidden" />
           </div>
         </div>
-        <p className="mt-8 text-center text-sm text-ink-soft">Looking for the problems these solve? <MoreLink href="/about/#problems">See the eight signs</MoreLink></p>
+        <div className="mt-8 grid gap-6 sm:grid-cols-2">
+          <Shot src="/shots/actions.png" alt="The actions tracker, with details hidden" />
+          <Shot src="/shots/calendar.png" alt="A calendar event, with details hidden" />
+        </div>
+        <p className="mt-8 text-center text-sm text-ink-soft">Looking for the problems these solve? <MoreLink href="/about/#problems">See the nine signs</MoreLink></p>
       </section>
 
       <section className="border-y border-line bg-surface py-16">
-        <div className="mx-auto grid max-w-6xl gap-5 px-4 md:grid-cols-2">
+        <div className="mx-auto grid max-w-[1400px] gap-5 px-6 md:grid-cols-2">
           <div className="card p-6">
             <p className="font-display text-lg font-semibold">A term-aware parent home page</p>
             <p className="mt-2 text-[15px] text-ink-soft">A home page that reflects your school&apos;s own term and your own voice. You edit all of it yourself.</p>
@@ -46,7 +49,7 @@ export default function Features() {
         </div>
       </section>
 
-      <section id="how" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-16">
+      <section id="how" className="mx-auto max-w-[1400px] scroll-mt-20 px-6 py-16">
         <SectionHead eyebrow="A day in the life" title="Before and after" />
         <div className="grid gap-8 lg:grid-cols-2">
           <article className="card p-6">
@@ -76,7 +79,7 @@ export default function Features() {
       </section>
 
       <section className="border-y border-line bg-surface py-16">
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto max-w-[1400px] px-6">
           <SectionHead eyebrow="Getting started" title="Simpler than you think" intro="You do not need an IT team. We guide your administrator through each step." />
           <div className="grid items-start gap-8 lg:grid-cols-2">
             <ol className="space-y-4">

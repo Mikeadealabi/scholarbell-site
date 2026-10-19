@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { LogIn, MessageCircle, Phone } from "lucide-react";
-import { PageHero, SignInButton } from "@/components/ui";
+import { Check, LogIn, Phone } from "lucide-react";
+import { SignInButton } from "@/components/ui";
+import { WhatsAppMessageCard } from "@/components/WhatsAppMessageCard";
 import { SITE } from "@/content";
 
 export const metadata: Metadata = {
@@ -9,37 +10,71 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE.url}/contact/` },
 };
 
+const REASONS = [
+  "See it running with a demo school that looks like yours",
+  "Get a straight answer on pricing, based on your number of students",
+  "Ask us anything: security, setup, moving your data, all of it",
+];
+
+const AFTER = [
+  ["You tell us about your school", "A couple of lines is enough. We don't need a procurement document."],
+  ["We reply and book a walkthrough", "Thirty minutes, over a call or WhatsApp, whichever suits you."],
+  ["You decide", "No pressure, no jargon. If it's not a fit, we'll say so."],
+] as const;
+
 export default function Contact() {
   return (
-    <>
-      <PageHero eyebrow="Contact" title="See it working in your school" intro="In 30 minutes, we'll show you how your school's problems get solved, using a demo school that looks like yours. No pressure and no jargon." />
+    <section className="mx-auto grid max-w-[1400px] items-start gap-12 px-6 py-14 sm:py-20 lg:grid-cols-[1fr_1fr]">
+      <div>
+        <h1 className="font-display text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl">
+          See ScholarBell <span className="marker">working in your school</span>, not a slideshow.
+        </h1>
 
-      <section className="mx-auto grid max-w-4xl gap-6 px-4 py-16 md:grid-cols-2">
-        <div className="card p-6">
-          <span className="grid h-11 w-11 place-items-center rounded-xl bg-brand-soft text-brand-strong" aria-hidden><MessageCircle className="h-5 w-5" /></span>
-          <h2 className="mt-4 font-display text-xl font-semibold">Message us on WhatsApp</h2>
-          <p className="mt-1 text-[15px] text-ink-soft">The message is ready-written. Add your school name, your role and the number of students, then send.</p>
-          <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="btn btn-primary mt-4 !min-h-[48px] !px-6 !text-base"><MessageCircle className="h-5 w-5" aria-hidden /> Book on WhatsApp</a>
-          <p className="hint">{SITE.phone1.label}</p>
+        <ul className="mt-7 space-y-3">
+          {REASONS.map((r) => (
+            <li key={r} className="flex items-start gap-3">
+              <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-brand-soft text-brand-strong" aria-hidden><Check className="h-3.5 w-3.5" /></span>
+              <span className="text-[15px] text-ink-soft">{r}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-7 flex items-center gap-3 border-t border-line pt-6 text-[15px] text-ink-soft">
+          <LogIn className="h-4 w-4 shrink-0 text-ink-faint" aria-hidden />
+          Parent or school staff? <a href={SITE.signInUrl} className="font-semibold text-brand-strong hover:underline">Sign in</a> instead.
         </div>
-        <div className="card p-6">
-          <span className="grid h-11 w-11 place-items-center rounded-xl bg-brand-soft text-brand-strong" aria-hidden><Phone className="h-5 w-5" /></span>
-          <h2 className="mt-4 font-display text-xl font-semibold">Call us</h2>
-          <ul className="mt-2 space-y-2 text-[15px]">
-            <li><a className="text-lg font-semibold hover:underline" href={`tel:${SITE.phone1.tel}`}>{SITE.phone1.label}</a></li>
-            <li><a className="text-lg font-semibold hover:underline" href={`tel:${SITE.phone2.tel}`}>{SITE.phone2.label}</a></li>
-          </ul>
-          <p className="hint">For pricing, call or message us for a quote based on your number of students.</p>
+
+        <div className="mt-8 rounded-2xl bg-canvas p-6">
+          <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint">What happens after you reach out</p>
+          <ol className="mt-4 space-y-4">
+            {AFTER.map(([h, t], i) => (
+              <li key={h} className="flex gap-3">
+                <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-brand text-[12px] font-bold text-brand-ink" aria-hidden>{i + 1}</span>
+                <div><p className="text-[14px] font-semibold text-ink">{h}</p><p className="text-[13px] text-ink-faint">{t}</p></div>
+              </li>
+            ))}
+          </ol>
         </div>
-        <div className="card flex flex-col items-start gap-3 p-6 md:col-span-2 md:flex-row md:items-center">
+      </div>
+
+      <div>
+        <WhatsAppMessageCard />
+        <div className="card mt-5 flex items-center gap-4 p-5">
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-soft text-brand-strong" aria-hidden><Phone className="h-5 w-5" /></span>
+          <div>
+            <p className="text-[13px] font-semibold uppercase tracking-wide text-ink-faint">Prefer to call?</p>
+            <p className="text-[15px]"><a className="font-semibold hover:underline" href={`tel:${SITE.phone1.tel}`}>{SITE.phone1.label}</a> · <a className="font-semibold hover:underline" href={`tel:${SITE.phone2.tel}`}>{SITE.phone2.label}</a></p>
+          </div>
+        </div>
+        <div className="card mt-5 flex flex-col items-start gap-3 p-5 sm:flex-row sm:items-center">
           <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent-soft text-ink" aria-hidden><LogIn className="h-5 w-5" /></span>
           <div className="flex-1">
-            <h2 className="font-display text-xl font-semibold">Parent or school staff?</h2>
-            <p className="text-[15px] text-ink-soft">Sign in to see what matters for your children. Parents join by invitation, so if you have not received one, ask your school office to invite you.</p>
+            <p className="font-display text-base font-semibold">Parent or school staff?</p>
+            <p className="text-[14px] text-ink-soft">Sign in to see what matters for your children. No invitation yet? Ask your school office.</p>
           </div>
           <SignInButton />
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

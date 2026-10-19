@@ -1,12 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Figtree } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SITE } from "@/content";
 
-const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
-const display = Fraunces({ subsets: ["latin"], variable: "--font-display", display: "swap", axes: ["opsz"] });
+// Figtree: the typeface monday.com's "clay" design system runs on. One family, two weights of presence.
+const sans = Figtree({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
+const display = Figtree({ subsets: ["latin"], variable: "--font-display", display: "swap" });
 
 const DESCRIPTION = "ScholarBell is the secure way for schools to keep parents in the loop on their scholars: the right news to the right families, with proof it landed.";
 
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
   },
   twitter: { card: "summary_large_image" },
 };
-export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#14532d" };
+export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#1e3a5f" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

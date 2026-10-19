@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { X } from "lucide-react";
-import { CtaBand, MoreLink, PageHero, SectionHead } from "@/components/ui";
+import { CtaBand } from "@/components/CtaBand";
+import { MoreLink, PageHero, SectionHead } from "@/components/ui";
 import { COSTS, NOT, PROBLEMS, SITE } from "@/content";
 
 export const metadata: Metadata = {
@@ -14,14 +15,14 @@ export default function About() {
     <>
       <PageHero eyebrow="About ScholarBell" title="The system between your school and your parents" intro="Most schools do not say &quot;we have a communication problem.&quot; They say &quot;parents never read anything&quot; or &quot;my office is overwhelmed.&quot; This is what we built to fix it, and why." />
 
-      <section id="problems" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-16">
-        <SectionHead eyebrow="Problems you may have without knowing it" title="Does any of this sound like your school?" intro="Here are eight things we hear. If three of them sound familiar, the cause is not your parents or your staff. It is the system between them." />
+      <section id="problems" className="mx-auto max-w-[1400px] scroll-mt-20 px-6 py-16">
+        <SectionHead eyebrow="Problems you may have without knowing it" title="Does any of this sound like your school?" intro={`Here are ${PROBLEMS.length} things we hear. If three of them sound familiar, the cause is not your parents or your staff. It is the system between them.`} />
         <ol className="grid gap-5 md:grid-cols-2">
           {PROBLEMS.map((p, i) => (
             <li key={p.quote} className="card flex gap-4 p-5">
               <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-warn-soft text-warn" aria-hidden><p.icon className="h-5 w-5" /></span>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint">Sign {i + 1} of 8</p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint">Sign {i + 1} of {PROBLEMS.length}</p>
                 <p className="mt-1 font-display text-lg font-semibold leading-snug">&ldquo;{p.quote}&rdquo;</p>
                 <p className="mt-2 text-[15px] text-ink-soft"><span className="font-semibold text-ink">What is really happening: </span>{p.truth}</p>
               </div>
@@ -35,7 +36,7 @@ export default function About() {
       </section>
 
       <section className="border-y border-line bg-surface py-16">
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto max-w-[1400px] px-6">
           <SectionHead eyebrow="The hidden bill" title="What it quietly costs you" intro="None of these problems send an invoice, which is why they last. The cost shows up elsewhere:" />
           <ul className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-2">
             {COSTS.map(([h, t]) => (
@@ -54,9 +55,9 @@ export default function About() {
       </section>
 
       <section id="story" className="scroll-mt-20 border-y border-line bg-surface py-16">
-        <div className="mx-auto max-w-3xl px-4">
+        <div className="mx-auto max-w-4xl px-6">
           <SectionHead eyebrow="Our story" title="Why we built ScholarBell" />
-          <div className="space-y-4 text-[17px] leading-relaxed text-ink-soft">
+          <div className="space-y-4 text-justify text-[17px] leading-relaxed text-ink-soft [text-justify:inter-word]">
             <p>We are a technology-solution provider, and most of our work has been building systems that organisations in Nigeria have to be able to trust: platforms where the right person sees the right information, where every action leaves a record, and where a mistake cannot quietly expose someone else&apos;s data.</p>
             <p>When we looked closely at how schools talk to parents, we saw something that would not be accepted anywhere else. A child&apos;s trip permission, a fee notice or a change of date was travelling through personal WhatsApp groups, paper circulars and a front-desk phone. There was no record of who had been told, no control over who saw what, and no way for a principal to know whether the message had landed.</p>
             <p>Schools were not careless. They were using the only tools within reach. But they were handling information about children, and that deserves the same discipline we expect when handling money or health records.</p>

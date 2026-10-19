@@ -1,6 +1,6 @@
 import {
   BellRing, CalendarClock, ClipboardCheck, EyeOff, FileSearch, FileWarning, KeyRound, Lock, MessageCircle,
-  ScrollText, ShieldCheck, Sparkles, UserCheck, Users, UsersRound, type LucideIcon,
+  ScrollText, ShieldCheck, Sparkles, Timer, UserCheck, Users, UsersRound, type LucideIcon,
 } from "lucide-react";
 
 /** One place for every fact the site states. Change a number or a link here and it changes everywhere. */
@@ -29,6 +29,7 @@ export const PROBLEMS: { quote: string; truth: string; icon: LucideIcon }[] = [
   { icon: BellRing, quote: "We announced it three times and parents still say they didn't know.", truth: "Messages go out to everyone and are read by no one, and nobody can prove who saw what. When a dispute arises, you have no record." },
   { icon: Users, quote: "A trip notice went to the whole school, not just Primary 4.", truth: "You cannot easily target by class or division, so parents receive noise, stop paying attention, and miss the message that mattered to them." },
   { icon: MessageCircle, quote: "Our official notices live in a teacher's WhatsApp group.", truth: "Personal phone numbers are exposed, there is no audit trail, messages vanish when a teacher leaves, and anything said there can be forwarded anywhere." },
+  { icon: Timer, quote: "We can't prove a parent even saw it.", truth: "WhatsApp messages can disappear in as little as 24 hours, turned on by anyone in the chat, on purpose or by accident. There is no record it ever existed, let alone that it was read." },
   { icon: FileWarning, quote: "Permission slips come back late, on paper, or never.", truth: "You cannot see who has responded, so staff chase parents one by one. Missing consent becomes a safeguarding and liability risk on trip day." },
   { icon: CalendarClock, quote: "We moved the event, and half the parents came on the old date.", truth: "Changes overwrite the original. Nobody can show what the date was, what changed, who changed it, or why." },
   { icon: UsersRound, quote: "One parent has three children in three divisions and complains about the noise.", truth: "Parents are treated as a single list instead of as families. A parent with children in KG, Primary and JSS should see each child's news clearly labelled, in one place." },

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { CtaBand, PageHero, SectionHead, Shot } from "@/components/ui";
+import { CtaBand } from "@/components/CtaBand";
+import { PageHero, SectionHead, Shot } from "@/components/ui";
 import { SITE, TRUST } from "@/content";
 
 export const metadata: Metadata = {
@@ -13,7 +14,7 @@ export default function Security() {
     <>
       <PageHero eyebrow="Security and privacy" title="You are handing us information about children and families" intro="Here is how we protect it, in plain words." />
 
-      <section className="mx-auto max-w-6xl px-4 py-16">
+      <section className="mx-auto max-w-[1400px] px-6 py-16">
         <ul className="grid gap-5 md:grid-cols-2">
           {TRUST.map((t) => (
             <li key={t.title} className="card flex gap-4 p-5">
@@ -25,7 +26,7 @@ export default function Security() {
       </section>
 
       <section className="border-y border-line bg-surface py-16">
-        <div className="mx-auto grid max-w-6xl items-center gap-8 px-4 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-[1400px] items-center gap-8 px-6 lg:grid-cols-2">
           <div>
             <SectionHead align="left" eyebrow="The audit log" title="A record you can rely on" intro="Important actions are recorded, so you can always answer who did what, and when." />
             <div className="rounded-2xl border border-line bg-canvas p-6">
