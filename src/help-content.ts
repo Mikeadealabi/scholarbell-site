@@ -1,4 +1,4 @@
-import { Building2, KeyRound, type LucideIcon } from "lucide-react";
+import { Building2, KeyRound, Megaphone, type LucideIcon } from "lucide-react";
 
 /** The help centre's content, grown one category at a time. Keep every fact here true to what
  *  the product actually does — these are support articles, not marketing copy. */
@@ -27,6 +27,12 @@ export const HELP_CATEGORIES: HelpCategory[] = [
     title: "Importing, invitations and admin access",
     description: "For the administrator's seat: setting up students and families from a spreadsheet, getting invitations delivered, and managing staff access safely.",
     icon: Building2,
+  },
+  {
+    slug: "sending-things",
+    title: "Announcements, permission slips and event changes",
+    description: "For staff publishing day to day: who an announcement actually reaches, who has responded to a request, and what parents are told when something changes.",
+    icon: Megaphone,
   },
 ];
 
@@ -230,6 +236,110 @@ export const HELP_ARTICLES: HelpArticle[] = [
       "Every grant and removal of a role is recorded in the audit log, so you can always answer who had access to which part of the school, and when.",
     ],
     related: ["last-administrator"],
+  },
+  {
+    slug: "who-receives-announcement",
+    category: "sending-things",
+    title: "Who will actually receive this announcement?",
+    summary: "How targeting works, and why you can only address parts of the school you're responsible for.",
+    steps: [
+      "Before you publish, you choose an audience: the whole school, one division, one level, or one class. The composer shows you the recipient count for exactly that audience before anything goes out.",
+      "You can only address parts of the school within your own role's responsibility. A class teacher can address their own class; a Head of division can address their whole division. Trying to reach beyond that is blocked, not just hidden.",
+      "A parent only ever sees a post if one of its audience rows matches one of their own children's classes — this is enforced at the data level, not just in what the screen shows, so it can't be bypassed by the interface.",
+      "If you need to reach several specific classes rather than a whole division, you can pick multiple audience entries on the same announcement.",
+    ],
+    related: ["cant-change-audience", "requires-acknowledgement"],
+  },
+  {
+    slug: "cant-change-audience",
+    category: "sending-things",
+    title: "I can't change who a published announcement was sent to",
+    summary: "The audience is frozen once something is live — here's the actual way to fix it.",
+    steps: [
+      "Once an announcement is published, its audience is locked. You can still edit the wording, priority or link, but not who it addresses.",
+      "This is deliberate: changing an audience after the fact could silently add or remove families from something they've already been notified about, with no clean record of what happened.",
+      "To actually reach a different audience, archive the announcement and publish a new one with the right audience. The archived original stays in your history.",
+      "If you simply targeted the wrong class before publishing, this doesn't apply — catch it at the composer stage, where the recipient count is shown before you commit.",
+    ],
+    related: ["who-receives-announcement"],
+  },
+  {
+    slug: "requires-acknowledgement",
+    category: "sending-things",
+    title: "What does \"requires acknowledgement\" do?",
+    summary: "The difference between a post being read and a post being acknowledged.",
+    steps: [
+      "A normal announcement is just marked read when a parent opens it. One with acknowledgement turned on also asks the parent to actively confirm they've seen it, and records that separately.",
+      "Use it for things you need proof of, such as a policy change or a safeguarding notice, not for routine updates — it adds a step for every parent, so it's worth reserving for when it matters.",
+      "You can see who has acknowledged and who hasn't on the announcement's own stats, with a straight list of outstanding parents so you know exactly who to follow up with.",
+      "A parent can't acknowledge a post without ScholarBell first marking it read, so an acknowledgement is always also a confirmed read.",
+    ],
+    related: ["who-receives-announcement", "permission-slip-tracking"],
+  },
+  {
+    slug: "permission-slip-tracking",
+    category: "sending-things",
+    title: "How do I see who has responded to a permission slip or form?",
+    summary: "Reading the completion and overdue counts on Actions & requests.",
+    steps: [
+      "Permission slips, surveys, forms and document requests all live under Actions & requests, with one line per request showing its audience, deadline, and a completed-versus-total count.",
+      "A request past its deadline with replies still missing is marked overdue in red, so it stands out from one that's simply still outstanding.",
+      "Open a specific request to see exactly which families have responded and which haven't, so you can follow up with the right people instead of re-announcing to everyone.",
+      "The same \"who hasn't responded yet\" idea applies to announcements that require acknowledgement — see that article for the equivalent view there.",
+    ],
+    related: ["requires-acknowledgement"],
+  },
+  {
+    slug: "event-change-notifications",
+    category: "sending-things",
+    title: "I changed an event's date — what do parents actually see?",
+    summary: "Why a reason is required, and what gets recorded.",
+    steps: [
+      "Changing an event's date, time or location is treated as a material change: it requires you to give a reason, and that reason is shown to every parent who gets notified.",
+      "Parents see both the old and new date, not just the new one, so nobody is left comparing a changed event against a memory of the original.",
+      "Every change is kept in that event's history permanently: what it was, what it became, who changed it, when, and why. Nothing is overwritten silently.",
+      "Only parents whose children the event actually addresses are notified — not the whole school, unless the event was addressed to the whole school to begin with.",
+    ],
+    related: ["event-no-notification", "cant-edit-finished-event"],
+  },
+  {
+    slug: "event-no-notification",
+    category: "sending-things",
+    title: "Why didn't parents get notified when I edited an event?",
+    summary: "Not every edit is treated as material enough to notify.",
+    steps: [
+      "Only changes to an event's date, time, location, or its cancellation count as material and trigger a notification to affected parents.",
+      "A wording-only edit, such as fixing a typo in the description or title, is saved and shows in the event's history, but does not send a notification — parents aren't paged for every small correction.",
+      "If you need parents to know about a change that wasn't material by itself, publish an announcement alongside it rather than relying on the event edit to notify them.",
+      "Marking an event completed also doesn't notify anyone; it's a bookkeeping status, not news.",
+    ],
+    related: ["event-change-notifications"],
+  },
+  {
+    slug: "cant-edit-finished-event",
+    category: "sending-things",
+    title: "I can't change a cancelled or completed event",
+    summary: "Why these two statuses are final.",
+    steps: [
+      "Once an event is marked cancelled or completed, it can no longer be edited, rescheduled, or have its date changed. Both are end states.",
+      "This protects the event's history from being rewritten after the fact — a cancelled trip stays recorded as cancelled, not quietly reopened and changed.",
+      "If a \"cancelled\" event is actually back on, create a new event rather than trying to revive the old one. The old one's history still shows exactly what happened and when.",
+      "Parents who had RSVP'd to an event can't change their RSVP once it's cancelled either, for the same reason.",
+    ],
+    related: ["event-change-notifications"],
+  },
+  {
+    slug: "schedule-announcement",
+    category: "sending-things",
+    title: "Can I write an announcement now and have it go out later?",
+    summary: "Drafts and scheduled publishing, and what each one means for notifications.",
+    steps: [
+      "Saving without publishing keeps an announcement as a draft: visible only to staff who can manage it, with no parent ever notified until you publish it.",
+      "Publishing can also be scheduled for a future date and time. Parents are notified exactly when it goes live, not when you originally wrote it.",
+      "A draft can be edited freely, including its audience, because nothing has gone out yet. Once it's published, see \"I can't change who a published announcement was sent to\" for what's still editable.",
+      "This is useful for preparing something ahead of a holiday or a busy day, without relying on being online at the right moment yourself.",
+    ],
+    related: ["cant-change-audience"],
   },
 ];
 
