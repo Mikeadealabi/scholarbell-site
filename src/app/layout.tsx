@@ -6,8 +6,10 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SITE } from "@/content";
 
 // Figtree: the typeface monday.com's "clay" design system runs on. One family, two weights of presence.
-const sans = Figtree({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
-const display = Figtree({ subsets: ["latin"], variable: "--font-display", display: "swap" });
+// Named --ff- (not --font-), so the loaded typeface's CSS variable can't collide with
+// Tailwind v4's own `--font-sans` theme token, which @theme declares at :root.
+const sans = Figtree({ subsets: ["latin"], variable: "--ff-sans", display: "swap" });
+const display = Figtree({ subsets: ["latin"], variable: "--ff-display", display: "swap" });
 
 const DESCRIPTION = "ScholarBell is the secure way for schools to keep parents in the loop on their scholars: the right news to the right families, with proof it landed.";
 

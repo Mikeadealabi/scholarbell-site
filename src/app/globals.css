@@ -1,6 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* v3's `darkMode: ["selector", '[data-theme="dark"]']`, ported to v4's CSS-first config. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /* ───────────── Design tokens ───────────── */
 :root {
@@ -61,6 +62,46 @@
   --brand-strong: color-mix(in oklab, var(--brand) 75%, white);
   --accent-soft: color-mix(in oklab, var(--accent) 20%, var(--surface));
 }
+
+/* Tailwind v4 theme: plain var() references, no manual color-mix/<alpha-value> wrapper needed —
+   v4 generates the opacity-modifier (bg-brand/50) color-mix() itself for any color token. */
+@theme {
+  --color-brand: var(--brand);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-strong: var(--brand-strong);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-danger-on: var(--on-danger);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+
+  --font-sans: var(--ff-sans), system-ui, sans-serif;
+  --font-display: var(--ff-display), system-ui, sans-serif;
+
+  --radius-xl: 0.9rem;
+  --radius-2xl: 1.2rem;
+
+  --shadow-card: 0 1px 2px rgb(var(--shadow-rgb) / 0.04), 0 1px 3px rgb(var(--shadow-rgb) / 0.06);
+  --shadow-pop: 0 12px 32px rgb(var(--shadow-rgb) / 0.14);
+}
+
+/* Ports v3's explicit content scope to v4 (which otherwise auto-scans the whole project),
+   so this can't ever start picking up classes out of node_modules or scripts. */
+@source "../**/*.tsx";
+@source "../**/*.ts";
 
 html { -webkit-text-size-adjust: 100%; }
 body {
